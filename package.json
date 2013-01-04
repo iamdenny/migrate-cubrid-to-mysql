@@ -1,0 +1,28 @@
+{
+    "name": "migrate-cubrid-to-mysql"
+  , "version": "0.0.1"
+  , "sescripton" : "Migrate cubrid to mysql"
+  , "keywords" : ["migrate","cubrid","mysql","convert"]
+  , "homepage" : "https://github.com/iamdenny/migrate-cubrid-to-mysql"
+  , "author" : "Denny Lim <hello@iamdenny.com>"
+  , "contributors" : [
+        {"name" : "Denny Lim", "email" : "iamdenny@nhn.com" }
+    ]
+  , "repository" : {
+        "type" : "git"
+      , "url" : "https://github.com/iamdenny/migrate-cubrid-to-mysql.git"
+    }
+  , "main" : "index"
+  , "engine" : "node >= 0.4.1"
+  , "scripts": {
+        "start": "node app"
+    }
+  , "dependencies": {
+        "node-cubrid" : "1.x.x"
+      , "mysql" : "2.x.x"
+    }
+  , "licenses": [{
+        "type": "MIT"
+      , "url": "http://www.opensource.org/licenses/mit-license.php"
+    }]
+}
