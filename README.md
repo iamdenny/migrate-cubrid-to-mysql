@@ -1,6 +1,6 @@
 # Migrate-Cubird-To-Mysql
 
-Mirate cubird to mysql.
+Migrate cubird to mysql.
 
 ## How to Install
 
@@ -20,13 +20,13 @@ Make tables schema on Mysql same as tables schema on Cubrid first.
 
 app.js
 ```js
-var Mom = require('migrate-cubird-to-mysql');
-var htOracle = {
+var Mcm = require('migrate-cubird-to-mysql');
+var htCubrid = {
     sHostname : '127.0.0.1',
     sUser : 'username',
     sPassword : 'password',
     nPort : 1527,
-    sDatabase : 'database or sid'
+    sDatabase : 'database'
 };
 var htMysql = {
     sHostname : '127.0.0.1',
@@ -36,28 +36,25 @@ var htMysql = {
     sDatabase : 'database',
     bDebug : false
 };
-var oMom = new Mom(htOracle, htMysql);
+var oMcm = new Mcm(htCubrid, htMysql);
 
-oMom.on('connected', function(){
+oMcm.once('connected', function(){
 	// first arg : oracle query
 	// second arg : mysql table name
 	// third arg : truncate(delete data from mysql table)
 	// forth arg : callback
-    oMom.migrateByQuery("SELECT username, nickname FROM user",
-      'user', true, function(htResult){
+    oMcm.migrateByQuery("SELECT * FROM user", 'user', true, function(htResult){
           console.log('First migration is done', htResult);
       });
 
-    oMom.migrateByQuery("SELECT group_id, group_name FROM group",
-      'group', true, function(htResult){
+    oMcm.migrateByQuery("SELECT * FROM group", 'group', true, function(htResult){
           console.log('Second migration is done', htResult);
       });
     
-    oMom.migrateByQuery("SELECT article_idx, title FROM article",
-      'article', true, function(htResult){
+    oMcm.migrateByQuery("SELECT * FROM article", 'article', true, function(htResult){
           console.log('Thrid migration is done', htResult);
       });      
-}).on('done', function(htResult){
+}).once('done', function(htResult){
     console.log('All done', htResult);
     process.exit(0);
 });
