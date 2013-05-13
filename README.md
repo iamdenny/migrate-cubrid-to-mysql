@@ -64,3 +64,8 @@ Execute
 ```bash
 node app.js
 ```
+
+# License
+MIT License
+
+Copyright 2013 NHN Corp.
